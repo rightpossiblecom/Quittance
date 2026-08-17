@@ -4,13 +4,16 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { BRAND, MARKETING_NAV } from "@/lib/marketing/content";
-import { clearSession, readSession, type DemoSession } from "@/lib/demo/auth";
+import { clearSession, ensureSessionCookie, readSession, type DemoSession } from "@/lib/demo/auth";
 
 export function MarketingHeader() {
     const [session, setSession] = useState<DemoSession | null>(null);
 
     useEffect(() => {
-        const sync = () => setSession(readSession());
+        const sync = () => {
+            ensureSessionCookie();
+            setSession(readSession());
+        };
         sync();
         window.addEventListener("quittance-session", sync);
         window.addEventListener("storage", sync);
@@ -48,7 +51,7 @@ export function MarketingHeader() {
                         {session ? (
                             <>
                                 <Button asChild variant="ghost" size="sm">
-                                    <Link href="/collect">Collect</Link>
+                                    <Link href="/inbox">Open house</Link>
                                 </Button>
                                 <Button
                                     variant="outline"

@@ -37,21 +37,28 @@ Their public site *is* the builder. We keep that chrome and write a house story 
 
 No leftover “Invoify”, Ali Abbasov, Buy Me a Coffee, or “free open-source invoice generator” voice on the public site.
 
-## 4. Every page in the marketing header and footer
+## 4. Marketing header and footer
 
-Header and footer list **every** public page: Product, Team, **Inbox**, **Collect**, **Invoice**, **Invoices**, Pricing, About, Contact, plus Log in / Sign up. Privacy and Terms live in the footer. A visitor on `/team` can open Inbox and Collect from the same menu.
+Header stays lean: Product, Team, Pricing, About, Contact, plus Log in / Sign up.
 
-- `/inbox` — mocked WhatsApp / voice / photo intake. Turn into invoice (delay, no model).
-- `/collect` — mocked rails (Paystack, M-Pesa, bank, WhatsApp). Nudge / mark paid.
+Footer is a full house: Product (changelog, status), Company (careers, press), Trust (security, help, privacy, cookies), Legal (terms, acceptable use, refunds). Cookie banner on marketing pages.
 
-- `/product` — Quittance intro, ≥4 screenshots of this UI, how it works, CTA to Sign up.
+Privacy and Terms read like a Lagos company — NDPR / POPIA language, no “this is a demo” or “any password works.”
+
+Inbox, Collect, Invoice, and Invoices stay **behind login**. Do not put those rooms on the public menu. A visitor who can walk into the house without an account can tell the demo is fake.
+
+- `/inbox` — mocked WhatsApp / voice / photo intake. Turn into invoice (delay, no model). Login required.
+- `/collect` — mocked rails (Paystack, M-Pesa, bank, WhatsApp). Nudge / mark paid. Login required.
+- `/invoice` and `/invoices` — their builder and ledger. Login required.
+
+- `/product` — Quittance intro, ≥4 screenshots of this UI, how it works, CTA to Sign up / Sign in.
 - `/team` — ≥2 people (Adanna Okonkwo, Kwame Boateng, Naledi Mokoena), roles, bios, LinkedIn, photos.
 
 ## 5. Login / signup
 
-New routes. Email + password. Any pair works. Short loading state. Cross-links.
+New routes. Email + password. Short loading state. Cross-links. Do not say “any password works” on the page.
 
-After login or signup → **`/invoice`**. Session is `localStorage` (`quittance:session`). Logout clears it and returns to `/login`.
+After login or signup → **`/inbox`** (or `?next=` if they were sent from a locked room). Session is `localStorage` (`quittance:session`) plus cookie `quittance_session` so middleware can bounce unsigned visitors to `/login`. Logout clears both.
 
 ## 6. In-app home and screens we keep
 

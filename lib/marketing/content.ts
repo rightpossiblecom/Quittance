@@ -6,10 +6,6 @@ export const BRAND_LINE =
 export const MARKETING_NAV = [
     { href: "/product", label: "Product" },
     { href: "/team", label: "Team" },
-    { href: "/inbox", label: "Inbox" },
-    { href: "/collect", label: "Collect" },
-    { href: "/invoice", label: "Invoice" },
-    { href: "/invoices", label: "Invoices" },
     { href: "/pricing", label: "Pricing" },
     { href: "/about", label: "About" },
     { href: "/contact", label: "Contact" },
@@ -22,9 +18,63 @@ export const APP_RAIL = [
     { href: "/invoices", label: "Invoices" },
 ] as const;
 
+export const COMPANY = {
+    legal: "Quittance Africa Limited",
+    address: "12 Idejo Street, Victoria Island, Lagos, Nigeria",
+    desks: "Lagos · Accra · Nairobi · Johannesburg",
+    hello: "hello@quittance.africa",
+    privacy: "privacy@quittance.africa",
+    security: "security@quittance.africa",
+    press: "press@quittance.africa",
+    careers: "careers@quittance.africa",
+} as const;
+
+export const FOOTER_COLUMNS = [
+    {
+        title: "Product",
+        links: [
+            { href: "/product", label: "Product" },
+            { href: "/pricing", label: "Pricing" },
+            { href: "/changelog", label: "Changelog" },
+            { href: "/status", label: "Status" },
+        ],
+    },
+    {
+        title: "Company",
+        links: [
+            { href: "/about", label: "About" },
+            { href: "/team", label: "Team" },
+            { href: "/careers", label: "Careers" },
+            { href: "/press", label: "Press" },
+            { href: "/contact", label: "Contact" },
+        ],
+    },
+    {
+        title: "Trust",
+        links: [
+            { href: "/security", label: "Security" },
+            { href: "/help", label: "Help" },
+            { href: "/privacy", label: "Privacy" },
+            { href: "/cookies", label: "Cookies" },
+        ],
+    },
+    {
+        title: "Legal",
+        links: [
+            { href: "/terms", label: "Terms" },
+            { href: "/acceptable-use", label: "Acceptable use" },
+            { href: "/refunds", label: "Refunds" },
+            { href: "/login", label: "Log in" },
+            { href: "/signup", label: "Sign up" },
+        ],
+    },
+] as const;
+
 export const MARKETING_FOOTER_LEGAL = [
     { href: "/privacy", label: "Privacy" },
     { href: "/terms", label: "Terms" },
+    { href: "/cookies", label: "Cookies" },
+    { href: "/security", label: "Security" },
 ] as const;
 
 export const CORRIDORS = [

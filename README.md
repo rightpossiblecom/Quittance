@@ -7,6 +7,6 @@ pnpm install
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000). Any email and password opens the ledger.
+Open [http://localhost:3000](http://localhost:3000). Sign in to reach the house.
 
 Source layout: [al1abb/invoify](https://github.com/al1abb/invoify). See `docs/PLAN.md`.

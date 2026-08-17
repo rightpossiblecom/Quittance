@@ -42,10 +42,7 @@ export default function ProductPage() {
                         <Link href="/signup">Sign up</Link>
                     </Button>
                     <Button asChild variant="outline">
-                        <Link href="/inbox">Inbox</Link>
-                    </Button>
-                    <Button asChild variant="outline">
-                        <Link href="/collect">Collect</Link>
+                        <Link href="/login">Sign in</Link>
                     </Button>
                 </div>
 
@@ -72,7 +69,7 @@ export default function ProductPage() {
                         How it works
                     </h2>
                     <ol className="text-muted-foreground mt-4 max-w-2xl list-decimal space-y-2 pl-5 text-sm leading-relaxed md:text-base">
-                        <li>Open an account. Any email and password lands you in the house.</li>
+                        <li>Create an account. You land in Inbox with the house already at work.</li>
                         <li>Inbox reads a chat, a voice note, or a photo and drafts the invoice.</li>
                         <li>Confirm in the builder. Generate the PDF. Save it to the ledger.</li>
                         <li>Collect nudges on WhatsApp, Paystack, M-Pesa, or the bank. Mark paid when it lands.</li>
@@ -100,7 +97,7 @@ export default function ProductPage() {
                         <Link href="/signup">Sign up</Link>
                     </Button>
                     <Button asChild size="lg" variant="outline">
-                        <Link href="/collect">Collect</Link>
+                        <Link href="/login">Sign in</Link>
                     </Button>
                 </div>
             </main>

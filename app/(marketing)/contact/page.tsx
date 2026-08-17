@@ -24,6 +24,21 @@ const BOXES = [
         email: "privacy@quittance.africa",
         note: "Access, erasure, and the paper we hold about you.",
     },
+    {
+        label: "Security",
+        email: "security@quittance.africa",
+        note: "A door that should not be open. Two Lagos working days.",
+    },
+    {
+        label: "Press",
+        email: "press@quittance.africa",
+        note: "Interviews, the mark, and the boilerplate.",
+    },
+    {
+        label: "Careers",
+        email: "careers@quittance.africa",
+        note: "A desk in Lagos, Accra, Nairobi, or Johannesburg.",
+    },
 ] as const;
 
 export default function ContactPage() {
@@ -40,7 +55,7 @@ export default function ContactPage() {
                     We sit in Lagos, Accra, and Johannesburg. Mail reaches the
                     desk that can answer it.
                 </p>
-                <div className="mt-10 grid gap-4 md:grid-cols-3">
+                <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                     {BOXES.map((box) => (
                         <Card key={box.label}>
                             <CardHeader>

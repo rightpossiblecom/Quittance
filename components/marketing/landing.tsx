@@ -79,7 +79,7 @@ export function MarketingLanding() {
                                 <Link href="/signup">Open the house</Link>
                             </Button>
                             <Button asChild size="lg" variant="outline">
-                                <Link href="/inbox">See Inbox</Link>
+                                <Link href="/login">Sign in</Link>
                             </Button>
                         </div>
                     </div>
@@ -207,7 +207,7 @@ export function MarketingLanding() {
                                 <Link href="/signup">Sign up</Link>
                             </Button>
                             <Button asChild size="lg" variant="outline">
-                                <Link href="/collect">Collect</Link>
+                                <Link href="/login">Sign in</Link>
                             </Button>
                         </div>
                     </Card>

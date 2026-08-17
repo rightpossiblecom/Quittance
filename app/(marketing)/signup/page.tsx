@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { AuthForm } from "@/components/auth/auth-form";
 import { MarketingPageFrame } from "@/components/marketing/page-frame";
 import { BRAND } from "@/lib/marketing/content";
@@ -12,7 +13,9 @@ export default function SignupPage() {
     return (
         <MarketingPageFrame>
             <main className="py-16 lg:container">
-                <AuthForm mode="signup" />
+                <Suspense fallback={null}>
+                    <AuthForm mode="signup" />
+                </Suspense>
             </main>
         </MarketingPageFrame>
     );

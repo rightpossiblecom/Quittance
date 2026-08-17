@@ -1,3 +1,4 @@
+import { CookieBanner } from "./cookie-banner";
 import { MarketingFooter } from "./footer";
 import { MarketingHeader } from "./header";
 
@@ -13,6 +14,7 @@ export function MarketingPageFrame({
             </div>
             <div className="flex-1">{children}</div>
             <MarketingFooter />
+            <CookieBanner />
         </div>
     );
 }

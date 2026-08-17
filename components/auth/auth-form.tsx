@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -14,8 +14,19 @@ type AuthFormProps = {
     mode: "login" | "signup";
 };
 
+const APP_HOMES = ["/inbox", "/collect", "/invoice", "/invoices"];
+
+function safeNext(value: string | null) {
+    if (!value) return "/inbox";
+    if (APP_HOMES.some((home) => value === home || value.startsWith(`${home}/`))) {
+        return value;
+    }
+    return "/inbox";
+}
+
 export function AuthForm({ mode }: AuthFormProps) {
     const router = useRouter();
+    const searchParams = useSearchParams();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
@@ -27,7 +38,7 @@ export function AuthForm({ mode }: AuthFormProps) {
         setLoading(true);
         window.setTimeout(() => {
             writeSession(email);
-            router.push("/invoice");
+            router.push(safeNext(searchParams.get("next")));
         }, 700);
     };
 
@@ -37,17 +48,17 @@ export function AuthForm({ mode }: AuthFormProps) {
                 <p className="text-muted-foreground text-xs tracking-wider uppercase">
                     {BRAND}
                 </p>
-                <CardTitle>{isSignup ? "Open a house account" : "Log in to the ledger"}</CardTitle>
+                <CardTitle>{isSignup ? "Create your house" : "Welcome back"}</CardTitle>
                 <CardDescription>
                     {isSignup
-                        ? "Any email and password. You land in the invoice builder with the house ledger already full."
-                        : "Enter the email you used for the house. Any password works on this ledger."}
+                        ? "Open an account to reach Inbox, Collect, and the ledger."
+                        : "Sign in to continue to your collections house."}
                 </CardDescription>
             </CardHeader>
             <CardContent>
                 <form className="space-y-4" onSubmit={onSubmit}>
                     <div className="space-y-2">
-                        <Label htmlFor="email">Email</Label>
+                        <Label htmlFor="email">Work email</Label>
                         <Input
                             id="email"
                             type="email"
@@ -73,26 +84,26 @@ export function AuthForm({ mode }: AuthFormProps) {
                     <Button type="submit" className="w-full" disabled={loading}>
                         {loading
                             ? isSignup
-                                ? "Opening the house…"
-                                : "Opening the ledger…"
+                                ? "Creating your house…"
+                                : "Signing in…"
                             : isSignup
-                              ? "Sign up"
-                              : "Log in"}
+                              ? "Create account"
+                              : "Sign in"}
                     </Button>
                 </form>
                 <p className="text-muted-foreground mt-4 text-sm">
                     {isSignup ? (
                         <>
-                            Already on the ledger?{" "}
+                            Already have an account?{" "}
                             <Link href="/login" className="text-foreground underline">
-                                Log in
+                                Sign in
                             </Link>
                         </>
                     ) : (
                         <>
-                            New house?{" "}
+                            New to Quittance?{" "}
                             <Link href="/signup" className="text-foreground underline">
-                                Sign up
+                                Create an account
                             </Link>
                         </>
                     )}

@@ -1,54 +1,50 @@
 import Link from "next/link";
-import { BRAND, BRAND_LINE, MARKETING_FOOTER_LEGAL, MARKETING_NAV } from "@/lib/marketing/content";
+import { BRAND, BRAND_LINE, COMPANY, FOOTER_COLUMNS } from "@/lib/marketing/content";
 
 export function MarketingFooter() {
     return (
-        <footer className="container py-10">
-            <div className="flex flex-col gap-6 border-t border-white/10 pt-8 md:flex-row md:items-start md:justify-between">
-                <div>
+        <footer className="container py-12">
+            <div className="grid gap-10 border-t border-white/10 pt-10 md:grid-cols-2 lg:grid-cols-5">
+                <div className="lg:col-span-1">
                     <p className="text-sm font-semibold tracking-tight">
                         {BRAND}{" "}
                         <span className="quittance-gold text-[10px] tracking-[0.18em] uppercase">
                             AI
                         </span>
                     </p>
-                    <p className="text-muted-foreground mt-2 max-w-sm text-sm leading-relaxed">
+                    <p className="text-muted-foreground mt-2 max-w-xs text-sm leading-relaxed">
                         {BRAND_LINE}
                     </p>
+                    <p className="text-muted-foreground mt-4 text-xs leading-relaxed">
+                        {COMPANY.legal}
+                        <br />
+                        {COMPANY.address}
+                    </p>
                 </div>
-                <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
-                    {MARKETING_NAV.map((item) => (
-                        <Link
-                            key={item.href}
-                            href={item.href}
-                            className="hover:text-foreground text-muted-foreground underline-offset-4 hover:underline"
-                        >
-                            {item.label}
-                        </Link>
-                    ))}
-                    {MARKETING_FOOTER_LEGAL.map((item) => (
-                        <Link
-                            key={item.href}
-                            href={item.href}
-                            className="hover:text-foreground text-muted-foreground underline-offset-4 hover:underline"
-                        >
-                            {item.label}
-                        </Link>
-                    ))}
-                    <Link
-                        href="/login"
-                        className="hover:text-foreground text-muted-foreground underline-offset-4 hover:underline"
-                    >
-                        Log in
-                    </Link>
-                    <Link
-                        href="/signup"
-                        className="hover:text-foreground text-muted-foreground underline-offset-4 hover:underline"
-                    >
-                        Sign up
-                    </Link>
-                </div>
+                {FOOTER_COLUMNS.map((column) => (
+                    <div key={column.title}>
+                        <p className="quittance-gold text-[10px] tracking-[0.18em] uppercase">
+                            {column.title}
+                        </p>
+                        <ul className="mt-3 space-y-2 text-sm">
+                            {column.links.map((item) => (
+                                <li key={item.href}>
+                                    <Link
+                                        href={item.href}
+                                        className="hover:text-foreground text-muted-foreground underline-offset-4 hover:underline"
+                                    >
+                                        {item.label}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                ))}
             </div>
+            <p className="text-muted-foreground mt-10 border-t border-white/10 pt-6 text-xs">
+                © {new Date().getFullYear()} {COMPANY.legal}. {COMPANY.desks}.
+                The paper stays with the house.
+            </p>
         </footer>
     );
 }
